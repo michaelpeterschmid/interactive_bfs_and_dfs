@@ -1,0 +1,75 @@
+canvas {
+  width: 6%;
+  height: 6%;
+  border: solid;
+  margin-left: 0.5%;
+}
+
+.border {
+  background-color: black;
+}
+
+.walkable {
+  background-color: white;
+}
+
+.solution {
+  background-color: gold;
+}
+
+.start {
+  background-color: red;
+}
+
+.end {
+  background-color: green;
+}
+.visited {
+}
+
+button {
+  width: 25%;
+  padding: 2%;
+}
+
+button:hover,
+button:focus {
+}
+
+@media only screen and (min-width: 1024px) {
+  canvas {
+    width: 4%;
+    height: 4%;
+    border: solid;
+    margin-left: 0.4%;
+  }
+
+  .border {
+    background-color: black;
+  }
+
+  .walkable {
+    background-color: white;
+  }
+
+  .solution {
+    background-color: gold;
+  }
+
+  .start {
+    background-color: red;
+  }
+
+  .end {
+    background-color: green;
+  }
+
+  button {
+    width: 15%;
+    padding: 1%;
+  }
+
+  button:hover,
+  button:focus {
+  }
+}

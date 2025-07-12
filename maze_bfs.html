@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>BFS/DFS Example</h1>
+
+    <h3>White = walkable fields, Black = Wall</h3>
+    <h3>
+      You can switch fields by clicking on them and thus trying out many
+      different mazes.
+    </h3>
+    
+    <div id="gridContainer">
+     
+      <canvas class="border" onclick="switchClass(this)"></canvas><canvas class="start walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas> <br>
+      <canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas> <br>
+      <canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas> <br>
+      <canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas> <br>
+      <canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="end" onclick="switchClass(this)"></canvas>
+      <br>
+      <canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas> <br>
+      <canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"> </canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas> <br>
+      <canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas> <br>
+      <canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas> <br>
+      <canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="walkable" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas> <br>
+      <canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas><canvas class="border" onclick="switchClass(this)"></canvas> <br>
+    
+    </div>
+    <br />
+    <br />
+    <div id="showPath">
+      <button onclick="createCanvasGrid('bfs')">Solve maze (BFS)</button>
+      <button onclick="createCanvasGrid('dfs')">Solve maze (DFS)</button>
+      <button onclick="resetMaze()">Reset Maze</button>
+
+    </div>
+
+     <h4>How this problem is solved</h4>
+
+    <p>For our maze, we can use BFS or DFS to find a path if such a path exists. If a path exists, it is guaranteed that BFS/DFS will find a solution. With BFS, it is even guaranteed that we will get the shortest path. We interpret the whole maze as a graph where each (walkable) cell is a node in the graph. We then want to traverse this graph from a start Node to an end Node. We also keep track of the nodes that we have already visited. This search process then yields a tree  <br> the maze itself is a graph (potentially with cycles), and it’s the search process (with visited-marking and parent pointers) that “yields a tree.”</p>
+    
+
+
+    <h3>This is how BFS works</h3>
+  <figure>
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Breadth-First-Search-Algorithm.gif"
+    alt="Animation of the Breadth-First Search algorithm"
+    width="500"
+    height="500"
+  >
+  <figcaption>
+    <strong>Breadth-First Search Animation</strong><br>
+    © 2009 <a href="https://commons.wikimedia.org/wiki/User:Mre" target="_blank" rel="noopener">Mre</a><br>
+    Licensed under 
+    <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">
+      CC BY-SA 3.0 Unported
+    </a><br>
+    No modifications were made.
+  </figcaption>
+</figure>
+
+
+    <h3>This is how DFS works</h3>
+    
+<figure>
+  <img 
+    src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif" 
+    alt="Animation of Depth-First Search algorithm"
+    width="500" 
+    height="500">
+  <figcaption>
+    <strong>Depth-First Search Animation</strong><br>
+    © 2009 <a href="https://commons.wikimedia.org/wiki/User:Mre" target="_blank" rel="noopener">Mre</a><br>
+    Licensed under 
+    <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">
+      CC BY-SA 3.0 Unported
+    </a><br>
+    No modifications were made.
+  </figcaption>
+</figure>
+
+
+
+   
+    <script src="script.js"></script>
+  </body>
+</html>
